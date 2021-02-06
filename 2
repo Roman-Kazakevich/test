@@ -1,0 +1,183 @@
+import java.util.Scanner;
+
+public class TEST2 {
+    public static void main(String[] args) {
+          //Scanner sc = new Scanner (System.in);
+          //int a = sc.nextInt();
+
+        /* Задание1
+            Задать целочисленный массив,
+            состоящий из элементов 0 и 1.
+            Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ].
+            С помощью цикла и условия заменить 0 на 1, 1 на 0.
+         */
+        System.out.println("Задание 1 :");
+        int[] $array1 = { 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0}; //Задать целочисленный массив, из элементов 0 и 1.
+        System.out.println("Заменить 0 на 1 и наоборот:");
+        int[] $array2 = myNegArrayBin($array1);
+        System.out.println("И еще раз,получится исходный массив:");
+        myNegArrayBin($array2);
+
+        /* Задание2
+            Задать пустой целочисленный массив размером 8.
+            С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21.
+         */
+
+        int[] $array4 = { 0, 3, 6, 9, 12, 15, 18, 21};
+        System.out.println(" ");
+        System.out.println("Задание 2 :");
+        System.out.println("Метод создал и заполнил новый пустой массив:");
+        int[] $array3 = myNewArrayChange ($array4);
+
+        /*
+        Задание3
+            Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ],
+            пройти по нему циклом и числа меньшие 6 умножить на 2.
+        */
+        System.out.println(" ");
+        System.out.println("Задание 3 :");
+        int[] $array5 = { 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        System.out.println("Исходный массив :");
+        myPrintIntArray($array5);
+        System.out.println("Числа меньше 6, были умножены на 2:");
+        myArrayIntChangeOnTwo($array5);
+
+
+        /*
+        Задание4
+            Создать квадратный двумерный целочисленный массив
+            (количество строк и столбцов одинаковое)
+            и с помощью цикла (-ов) заполнить его диагональные элементы единицами.
+        */
+        System.out.println(" ");
+        System.out.println("Задание 4 :");
+        System.out.println("Созается нулевой двумерный массив :");
+        int $valArr = 5;
+        int[][] $array6 =  myNewQMatrix($valArr);
+        System.out.println("Значения главной диагонали изменить на 1 :");
+        myDoQOMatrix($array6);
+    }
+
+    // Задание1. С помощью цикла и условия в переданном методу массиве заменить 0 на 1, 1 на 0.
+    private static int[] myNegArrayBin(int[] $arrayBin) {
+        int $lengthArr = $arrayBin.length;
+        System.out.print("[");
+        for(int i=0; i<$lengthArr; i++){
+            $arrayBin[i] = Math.abs($arrayBin[i] - 1); // Вычитаем единицу и берем знак по модулю.
+            System.out.print(" " + $arrayBin[i]);
+        }
+        System.out.print(" ]");
+        System.out.println(" ");
+        return $arrayBin;// Возвращаем массив.
+    }
+
+
+    // Задание2
+    //  Задать пустой целочисленный массив размером 8.
+    //  С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21.
+    private static int[] myNewArrayChange(int[] $arrayOld) {
+        //  Бессмысленный метод, создает новый массив int[] $arrayNew
+        //  И заполняет его значениями из массива переданного методу
+        int $lengthArr = $arrayOld.length; //  Длина массива переданного методу (число int)
+        int[] $arrayNew = new int[$lengthArr];//  Новый пустой массив длина = длине массива переданного методу
+        System.out.print("[");
+        for(int i=0; i<$lengthArr; i++){
+            $arrayNew[i] = $arrayOld[i]; //Заполняем массив значениями принимаемого массива
+            System.out.print(" " + $arrayNew[i]);
+        }
+        System.out.print(" ]");
+        System.out.println(" ");
+        return $arrayNew;// Возвращаем новый массив.
+    }
+
+    /*
+    Задание3
+        Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ],
+        пройти по нему циклом и числа меньшие 6 умножить на 2.
+    */
+    private static int[] myArrayIntChangeOnTwo(int[] $arrayOld) {
+        //  Метод, создает новый массив int[] $arrayNew
+        //  И заполняет его циклом значениями из массива переданного методу
+        //  Если значение меньше 6, то оно удваевается
+        int $lengthArr = $arrayOld.length; //  Длина массива переданного методу (число int)
+        int[] $arrayNew = new int[$lengthArr];//  Новый пустой массив длина = длине массива переданного методу
+        System.out.print("[");
+        for(int i=0; i<$lengthArr; i++){
+            int $tempCont = $arrayOld[i];
+            if ($tempCont < 6) {
+                $arrayNew[i] = ($tempCont * 2); //Заполняем массив значениями принимаемого массива * 6
+            }
+            else {
+                $arrayNew[i] = $arrayOld[i]; //Заполняем массив значениями принимаемого массива
+            }
+            System.out.print(" " + $arrayNew[i]);
+        }
+        System.out.print(" ]");
+        System.out.println(" ");
+        return $arrayNew;// Возвращаем новый массив.
+    }
+
+    private static int[] myPrintIntArray (int[] $arrayOld) {
+        int $lengthArr = $arrayOld.length; //  Длина массива переданного методу (число int)
+        System.out.print("[");
+        for(int i=0; i < $lengthArr; i++){
+            System.out.print(" " + $arrayOld[i]);        }
+        System.out.print(" ]");
+        System.out.println(" ");
+        return $arrayOld;// Возвращаем массив.
+    }
+
+    /*
+    Задание4
+        Создать квадратный двумерный целочисленный массив
+        (количество строк и столбцов одинаковое)
+        и с помощью цикла (-ов) заполнить его диагональные элементы единицами.
+    */
+    private static int[][] myNewQMatrix (int $nArray) {
+        // Метод создает двумерный массив размерностью $nArray заполняет его нулями
+        int[][] $arrayNew = new int[$nArray][$nArray];
+        int $lengthIArr = $arrayNew.length;
+        System.out.print("[");
+        System.out.println(" ");
+        for (int i = 0; i< $arrayNew.length; i++) {
+            System.out.print("[");
+            for (int j = 0; j < $arrayNew[0].length; j++) {
+                    $arrayNew[i][j] = 0;
+                    System.out.print(" " + $arrayNew[i][j]);
+            }
+            System.out.print(" ]");
+            System.out.println(" ");
+        }
+
+        System.out.print(" ]");
+        System.out.println(" ");
+        return $arrayNew;// Возвращаем массив.
+    }
+
+    private static int[][] myDoQOMatrix ( int[][] $arrayNew) {
+        // Метод меняет значения двумерного массива int по главной диагонали на 1
+        //
+        int $lengthIArr = $arrayNew.length; // Количество строк
+        System.out.print("[");
+        System.out.println(" ");
+        for (int i = 0; i< $lengthIArr; i++) {
+            System.out.print("[");
+            int $lengthJArr = $arrayNew[i].length; // Длина i-той строки
+            for (int j = 0; j < $lengthJArr; j++) {
+                if (i == j) {
+                    $arrayNew[i][j] = 1;
+                    System.out.print(" " + $arrayNew[i][j]);
+                }
+                else {
+                    System.out.print(" " + $arrayNew[i][j]);
+                }
+            }
+            System.out.print(" ]");
+            System.out.println(" ");
+        }
+
+        System.out.print(" ]");
+        System.out.println(" ");
+        return $arrayNew;// Возвращаем массив.
+    }
+}
